@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="Programowanie3ProjektZaliczeniowyRadosławBoczoń.Views.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Programowanie3ProjektZaliczeniowyRadosławBoczoń.Views"
+             mc:Ignorable="d" 
+             Style="{StaticResource lightStyle}"
+             xmlns:mv="clr-namespace:Programowanie3ProjektZaliczeniowyRadosławBoczoń.ModelViews"
+             xmlns:test="clr-namespace:Programowanie3ProjektZaliczeniowyRadosławBoczoń.WPF_Controls"
+             >
+    <UserControl.Resources>
+        <mv:Start_MV x:Key="start"/>
+        
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+
+        <test:Login_C Grid.Column="1" Grid.Row="1"/>
+        <Button Grid.Column="1" Grid.Row="3" DataContext="{StaticResource start}" Command="{Binding noLogin, Mode=OneTime}" FontSize="20" Content="Start as guest" Style="{StaticResource LightButtonStyle}"/>
+
+    </Grid>
+</UserControl>
