@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="Programowanie3ProjektZaliczeniowyRadosławBoczoń.Views.History_Controls.HistoryButtons_C"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Programowanie3ProjektZaliczeniowyRadosławBoczoń.Views.History_Controls"
+             mc:Ignorable="d" 
+             Style="{StaticResource lightStyle}"
+             FontSize="10"
+             xmlns:mv="clr-namespace:Programowanie3ProjektZaliczeniowyRadosławBoczoń.ModelViews.History_MV"     
+             
+             >
+    <UserControl.Resources>
+        <mv:HistoryButtons_C_MV x:Key="MV"/>
+    </UserControl.Resources>
+    <Grid Width="300" Height="50">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Text="Previous search"/>
+        <TextBlock Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Text="Next search"/>
+       
+        <Button Grid.Row="1" Grid.Column="0" DataContext="{StaticResource MV}" Command="{Binding next}">
+            <Grid Width="50" Height="100">
+            <Canvas HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Polygon Points="40,0 30,10 40,20 0,10" Fill="Black" Canvas.Top="0" Canvas.Left="0"/>
+            </Canvas>
+            </Grid>
+        </Button>
+
+        <Button Grid.Row="1" Grid.Column="2" DataContext="{StaticResource MV}" Command="{Binding prev}">
+            <Grid Width="50" Height="100">
+                <Canvas HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Polygon Points="0,0 40,10 00,20 10,10" Fill="Black" Canvas.Top="0" Canvas.Left="0"/>
+                </Canvas>
+            </Grid>
+        </Button>
+
+    </Grid>
+</UserControl>

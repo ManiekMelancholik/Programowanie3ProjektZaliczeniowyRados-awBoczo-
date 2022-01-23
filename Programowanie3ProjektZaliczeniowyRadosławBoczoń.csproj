@@ -8,7 +8,13 @@
 
   <ItemGroup>
     <Folder Include="Interfaces\" />
-    <Folder Include="Model\" />
+    <Folder Include="Utylities\DataBase\DataBaseQuerries\WorkerQuerries\" />
+    <Folder Include="Windows\TestSearchWindow\Views\" />
+    <Folder Include="Windows\TestSearchWindow\WPF_Controls\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   </ItemGroup>
 
 </Project>

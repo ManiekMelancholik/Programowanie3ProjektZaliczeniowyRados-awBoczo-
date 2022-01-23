@@ -4,11 +4,12 @@
              xmlns:local="clr-namespace:Programowanie3ProjektZaliczeniowyRadosławBoczoń"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <Style x:Key="lightStyle" TargetType="Control">
+        
+        <Style x:Key="lightStyle" TargetType="UserControl">
             <Setter Property="Background" Value="AliceBlue"/>
             <Setter Property="Foreground" Value="DarkBlue"/>
             <Setter Property="FontSize" Value="20"/>
-            <Setter Property="FontFamily" Value="CourierNew"/>
+            <Setter Property="FontFamily" Value="Courier New"/>
         </Style>
 
     
@@ -25,7 +26,7 @@
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="10" BorderThickness="2" BorderBrush="Green">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" ContentSource="Content">
-                              
+                               
                             </ContentPresenter>
                         </Border>
                         

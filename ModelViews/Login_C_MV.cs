@@ -13,12 +13,14 @@ namespace Programowanie3ProjektZaliczeniowyRadosławBoczoń.ModelViews
     using System.Windows.Input;
     using WPF_Controls;
     using System.Windows;
+    using Programowanie3ProjektZaliczeniowyRadosławBoczoń.Views;
+    using Programowanie3ProjektZaliczeniowyRadosławBoczoń.Model;
 
     public class Login_C_MV
     {
         public Login_C_MV() { }
 
-
+        #region properties
         private string _login;
         private string _password;
         public string login
@@ -48,7 +50,7 @@ namespace Programowanie3ProjektZaliczeniowyRadosławBoczoń.ModelViews
                 _password = value;
             }
         }
-
+        #endregion
         private ICommand _enter;
         public ICommand enter
         {
@@ -59,6 +61,8 @@ namespace Programowanie3ProjektZaliczeniowyRadosławBoczoń.ModelViews
                     _enter = new ACC(
                         exec =>
                         {
+                            User.SetNewUser(login, password, "ADMIN");
+                            MV_Control.SetView(new LogedInView());
                             MessageBox.Show($"loging as\n\n{login}\n\n{password}" );
                         },
                         canExec =>

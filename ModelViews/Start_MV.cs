@@ -27,6 +27,7 @@ namespace Programowanie3ProjektZaliczeniowyRadosławBoczoń.ModelViews
                         e =>
                         {
                             MessageBox.Show("Start without logging in");
+                            MV_Control.SetView(new GuestView());
                             
                         },
                         ce =>
