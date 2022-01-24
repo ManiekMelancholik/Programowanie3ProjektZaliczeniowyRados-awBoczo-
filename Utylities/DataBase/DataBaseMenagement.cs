@@ -36,6 +36,8 @@ namespace Programowanie3ProjektZaliczeniowyRadosławBoczoń.Utylities.DataBase
                         MessageBox.Show(e.Message);
                     }
                 }
+                
+              //  _connection.Open();
                 return _connection;
             }
         }

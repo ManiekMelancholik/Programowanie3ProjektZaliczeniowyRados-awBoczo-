@@ -9,7 +9,7 @@ namespace Programowanie3ProjektZaliczeniowyRadosławBoczoń.Utylities.DataBase
 {
     public interface IQuerry
     {
-        public abstract DataTable ExecuteQuerry();
+        public abstract DataTable? ExecuteQuerry();
 
         public abstract bool ValidateQuerry();
 

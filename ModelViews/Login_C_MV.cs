@@ -15,6 +15,8 @@ namespace Programowanie3ProjektZaliczeniowyRadosławBoczoń.ModelViews
     using System.Windows;
     using Programowanie3ProjektZaliczeniowyRadosławBoczoń.Views;
     using Programowanie3ProjektZaliczeniowyRadosławBoczoń.Model;
+    using Programowanie3ProjektZaliczeniowyRadosławBoczoń.Utylities.DataBase.DataBaseQuerries.StandarUserQuerries;
+    using Programowanie3ProjektZaliczeniowyRadosławBoczoń.Utylities.DataBase;
 
     public class Login_C_MV
     {
@@ -61,7 +63,8 @@ namespace Programowanie3ProjektZaliczeniowyRadosławBoczoń.ModelViews
                     _enter = new ACC(
                         exec =>
                         {
-                            User.SetNewUser(login, password, "ADMIN");
+                            // User.SetNewUser(login,"ADMIN");
+                            IQuerry q = new LogIn(password, login);
                             MV_Control.SetView(new LogedInView());
                             MessageBox.Show($"loging as\n\n{login}\n\n{password}" );
                         },
