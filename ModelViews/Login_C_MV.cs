@@ -53,6 +53,8 @@ namespace Programowanie3ProjektZaliczeniowyRadosławBoczoń.ModelViews
             }
         }
         #endregion
+
+
         private ICommand _enter;
         public ICommand enter
         {
@@ -65,8 +67,17 @@ namespace Programowanie3ProjektZaliczeniowyRadosławBoczoń.ModelViews
                         {
                             // User.SetNewUser(login,"ADMIN");
                             IQuerry q = new LogIn(password, login);
-                            MV_Control.SetView(new LogedInView());
-                            MessageBox.Show($"loging as\n\n{login}\n\n{password}" );
+                            if (q.ExecuteQuerry() == null)
+                            {
+                                MV_Control.SetView(new LogedInView());
+                            }
+                            else
+                            {
+                                MessageBox.Show("WRONG \n LOGIN \n CREDENTIALS");
+                            }
+                            //MessageBox.Show($"loging as\n\n{login}\n\n{password}" );
+
+
                         },
                         canExec =>
                         {

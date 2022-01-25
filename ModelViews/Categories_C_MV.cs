@@ -1,5 +1,6 @@
 ﻿using Programowanie3ProjektZaliczeniowyRadosławBoczoń.Utylities;
 using Programowanie3ProjektZaliczeniowyRadosławBoczoń.WPF_Controls;
+using Programowanie3ProjektZaliczeniowyRadosławBoczoń.WPF_Controls.DB_CONTROLS;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +38,27 @@ namespace Programowanie3ProjektZaliczeniowyRadosławBoczoń.ModelViews
                 return _searchCosmetics;
             }
         }
-
+        private ICommand _appointments;
+        public ICommand appointments
+        {
+            get
+            {
+                if (_appointments == null)
+                {
+                    _appointments = new ACC(
+                        e =>
+                        {
+                            MV_Control.SetView(new Apointments_C());
+                        },
+                        ce =>
+                        {
+                            return true;
+                        }
+                        );
+                }
+                return _appointments;
+            }
+        }
 
 
 

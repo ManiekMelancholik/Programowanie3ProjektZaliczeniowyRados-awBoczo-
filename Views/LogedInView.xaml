@@ -25,7 +25,7 @@
             <RowDefinition/>
             
         </Grid.RowDefinitions>
-        <history:HistoryButtons_C HorizontalAlignment="Left" VerticalAlignment="Top"/>
+       <!-- <history:HistoryButtons_C HorizontalAlignment="Left" VerticalAlignment="Top"/>-->
         <controls:Categories_C Grid.Column="0" Grid.Row="1" />
         <controls:LogedInUser_C Grid.Column="1" Grid.Row="0"/>
 

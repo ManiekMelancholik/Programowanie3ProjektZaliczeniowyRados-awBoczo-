@@ -26,7 +26,7 @@ namespace Programowanie3ProjektZaliczeniowyRadosławBoczoń.ModelViews
                     _noLogin = new ACC(
                         e =>
                         {
-                            MessageBox.Show("Start without logging in");
+                           // MessageBox.Show("Start without logging in");
                             MV_Control.SetView(new GuestView());
                             
                         },
@@ -50,7 +50,7 @@ namespace Programowanie3ProjektZaliczeniowyRadosławBoczoń.ModelViews
                     _login = new ACC(
                         e =>
                         {
-                            MessageBox.Show("Starting LOGING IN");
+                          //  MessageBox.Show("Starting LOGING IN");
                             MV_Control.SetView(new LoginView());
                         },
                         ce =>
@@ -73,7 +73,8 @@ namespace Programowanie3ProjektZaliczeniowyRadosławBoczoń.ModelViews
                     _exit = new ACC(
                         e =>
                         {
-                            MessageBox.Show("EXITING APPLICATION");
+                           // MessageBox.Show("EXITING APPLICATION");
+                            MainWindow.GetInstance().Close();
                         },
                         ce =>
                         {

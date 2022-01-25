@@ -25,6 +25,11 @@ namespace Programowanie3ProjektZaliczeniowyRadosławBoczoń
         {
             InitializeComponent();
             _instance = this;
+            //rep.ReportServer.ReportServerUrl = new Uri(@"http://laptop-k83qnn3g", System.UriKind.Absolute).ToString();
+           // rep.ReportServer.ReportPath = @"/Reports/report/Report3";
+            //rep.RefreshReport();
+
+
         }
         public static MainWindow GetInstance()
         {

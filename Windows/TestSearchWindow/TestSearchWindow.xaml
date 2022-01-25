@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Programowanie3ProjektZaliczeniowyRadosławBoczoń.Windows.TestSearchWindow"
         mc:Ignorable="d"
+        
+        xmlns:xaml="clr-namespace:BoldReports.UI.Xaml;assembly=BoldReports.Wpf"
         Title="TestSearchWindow" Height="450" Width="800">
     
     <Grid>
-        <DataGrid/>
+        <xaml:ReportViewer x:Name="rep" ReportPath="http://laptop-k83qnn3g/Reports/report/Customers"/>
     </Grid>
 </Window>

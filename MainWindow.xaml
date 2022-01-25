@@ -7,6 +7,8 @@
         xmlns:startup ="clr-namespace:Programowanie3ProjektZaliczeniowyRadosławBoczoń.Views"
         mc:Ignorable="d"
         
+        xmlns:xaml="clr-namespace:BoldReports.UI.Xaml;assembly=BoldReports.Wpf"
+        
         Title="MainWindow" >
     <Window.DataContext>
         <local:MV_Control/>
@@ -14,7 +16,13 @@
     </Window.DataContext>
     <Viewbox x:Name="MainWindowContent">
         <StackPanel>
-        <!--<Button Command="{Binding startup, Mode=OneTime}" Content="START" FontSize="40"/>-->
+            <!--
+            <xaml:ReportViewer />
+           
+            <xaml:ReportViewer x:Name="rep" ReportPath="C:\Users\Quiqhaqru\source\repos\ZaliczenieProgramowanie3RB\Report3.rdl" />
+
+           <Button Command="{Binding startup, Mode=OneTime}" Content="START" FontSize="40"/>-->
+
             <startup:StartView/>
         </StackPanel>
     </Viewbox>

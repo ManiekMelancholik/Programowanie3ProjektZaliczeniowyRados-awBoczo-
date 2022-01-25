@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Programowanie3ProjektZaliczeniowyRadosławBoczoń.Utylities.DataBase.DataBaseQuerries.StandarUserQuerries
 {
@@ -26,13 +27,15 @@ namespace Programowanie3ProjektZaliczeniowyRadosławBoczoń.Utylities.DataBase.D
 
         public DataTable? ExecuteQuerry()
         {
+            SqlConnection con = DataBaseMenagement.connection;
+            con.Open();
             if (ValidateQuerry())
             {
-                string result;
-                string dbRole;
-                string name;
-                SqlConnection con = DataBaseMenagement.connection;
-                con.Open();
+                string result="";
+                string dbRole="";
+                string name="";
+                bool gotCredentials = false;
+                
                 using (SqlCommand procedure = new SqlCommand("Login", con))
                 {
                     procedure.CommandType = CommandType.StoredProcedure;
@@ -41,39 +44,48 @@ namespace Programowanie3ProjektZaliczeniowyRadosławBoczoń.Utylities.DataBase.D
                     SqlParameter userPassword = new SqlParameter("@userPassword", password);
                     procedure.Parameters.Add(userLogin);
                     procedure.Parameters.Add(userPassword);
-                    dbRole = procedure.ExecuteScalar().ToString();
+                    
+                    if (procedure.ExecuteScalar()!=null )
+                    {
+                        dbRole = procedure.ExecuteScalar().ToString();
+                        gotCredentials = true;
+                    }
+
 
                 }
-                if (dbRole == "admin")
+                if (gotCredentials)
                 {
-                    User.SetNewUser(login, dbRole);
+                    if (dbRole == "admin")
+                    {
+                        User.SetNewUser(login, dbRole);
+                        con.Close();
+                        return null;
+                    }
+
+                    using (SqlCommand procedure = new SqlCommand("GetUserID", con))
+                    {
+                        procedure.CommandType = CommandType.StoredProcedure;
+
+                        SqlParameter userLogin = new SqlParameter("@userLogin", login);
+                        SqlParameter userPassword = new SqlParameter("@userPassword", password);
+                        procedure.Parameters.Add(userLogin);
+                        procedure.Parameters.Add(userPassword);
+                        result = procedure.ExecuteScalar().ToString();
+                    }
+                    string querry = $"SELECT name FROM[Zaliczenie].[dbo].[clients] WHERE (ID={int.Parse(result)})";
+                    using (SqlCommand command = new SqlCommand(querry, con))
+                    {
+                        command.CommandType = System.Data.CommandType.Text;
+                        name = command.ExecuteScalar().ToString();
+                    }
+
+                    User.SetNewUser(name, dbRole, int.Parse(result));
                     con.Close();
                     return null;
                 }
-
-                using (SqlCommand procedure = new SqlCommand("GetUserID", con))
-                {
-                    procedure.CommandType = CommandType.StoredProcedure;
-
-                    SqlParameter userLogin = new SqlParameter("@userLogin", login);
-                    SqlParameter userPassword = new SqlParameter("@userPassword", password);
-                    procedure.Parameters.Add(userLogin);
-                    procedure.Parameters.Add(userPassword);
-                    result = procedure.ExecuteScalar().ToString();
-                }
-                string querry = $"SELECT name FROM[Zaliczenie].[dbo].[cliendt] WHERE (ID={int.Parse(result)})";
-                using (SqlCommand command = new SqlCommand(querry, con))
-                {
-                    command.CommandType = System.Data.CommandType.Text;
-                    name = command.ExecuteScalar().ToString();
-                }
-
-                User.SetNewUser(name, dbRole, int.Parse(result));
-                con.Close();
-
             }
-
-            return null;
+            con.Close();
+            return new DataTable();
 
 
         }

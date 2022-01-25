@@ -5,7 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Programowanie3ProjektZaliczeniowyRadosławBoczoń.WPF_Controls"
              mc:Ignorable="d" 
-            xmlns:mv="clr-namespace:Programowanie3ProjektZaliczeniowyRadosławBoczoń.ModelViews"
+             
+             xmlns:mv="clr-namespace:Programowanie3ProjektZaliczeniowyRadosławBoczoń.ModelViews"
+            
              Style="{StaticResource lightStyle}"
              >
     <UserControl.Resources>
